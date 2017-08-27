@@ -2,7 +2,7 @@
 
     <!-- Genéricos -->
 
-    <string name="app_name">EmptyProject</string>
+    <string name="app_name">IB-Internal</string>
     <string name="total">Total</string>
     <string name="diference">Diferencia</string>
     <string name="generic_error">Lo sentimos, ha ocurrido un error.</string>
