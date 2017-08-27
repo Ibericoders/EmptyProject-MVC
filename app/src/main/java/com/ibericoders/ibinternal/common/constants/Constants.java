@@ -39,6 +39,16 @@ public class Constants {
     public static final String UTF8 = "UTF-8";
 
     /**
+     * IDs de idiomas para codificado.
+     */
+    public static int LANGUAGE_ID_SPANISH = 1;
+
+    /**
+     * Nombre para las preferencias de configuración.
+     */
+    public static String PREFS_NAME_CONFIG = "prefs_name_config";
+
+    /**
      * Constantes de tiempo útiles.
      */
     public static final long Millis_In_A_Week = 604800000;

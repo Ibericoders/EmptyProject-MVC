@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ibericoders.ibinternal.app.activities.dices.DicesActivity"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <include
+        layout="@layout/g_toolbar"
+        android:id="@+id/toolbar_tb"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/margin_padding_size_xxlarge"
+        android:layout_marginEnd="@dimen/margin_padding_size_xxlarge">
+
+        <TextView
+            android:id="@+id/dices_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_padding_size_xxlarge"
+            android:text="@string/text_dices"
+            android:textSize="32sp"
+            android:textColor="@color/colorPrimaryDark"
+
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <ImageView
+            android:id="@+id/dices_imgdice_iv"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dices_title_tv"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_padding_size_large"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/roll_description"
+            android:cropToPadding="false"
+            app:srcCompat="@drawable/dice3droll" />
+
+        <TextView
+            android:id="@+id/dices_randomtext_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_pick_random"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="22sp"
+            android:layout_marginTop="@dimen/margin_padding_size_largex"
+            android:layout_below="@id/dices_imgdice_iv"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/dices_arbitrarynumber_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_random_number"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="42sp"
+            android:layout_marginBottom="21dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:id="@+id/dices_arbitrary_bt"
+            style="@style/Base.TextAppearance.AppCompat.Widget.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:text="@string/button_arbitrary"
+            android:layout_above="@id/dices_arbitrarynumber_tv"
+            android:layout_marginBottom="@dimen/margin_padding_size_xlarge" />
+
+        <SeekBar
+            android:id="@+id/dices_seekbar_sk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_padding_size_zero"
+            android:layout_marginBottom="@dimen/margin_padding_size_medium"
+            android:layout_above="@+id/dices_arbitrary_bt"/>
+
+        <TextView
+            android:id="@+id/dices_maximum_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_padding_size_zero"
+            android:layout_marginBottom="@dimen/margin_padding_size_medium"
+            android:textSize="18sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_toEndOf="@id/dices_seekbar_sk"
+            android:layout_above="@+id/dices_arbitrary_bt"
+            android:layout_alignParentEnd="true"/>
+
+        <include
+            layout="@layout/g_error_screen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
+
+        <include
+            layout="@layout/g_loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+</LinearLayout>

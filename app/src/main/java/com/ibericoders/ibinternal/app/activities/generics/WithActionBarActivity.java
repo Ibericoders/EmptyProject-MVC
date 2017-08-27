@@ -29,7 +29,7 @@ public abstract class WithActionBarActivity extends RootActivity{
      *
      * @param toolbar Safe-null. Se comprueba en el propio método si el argumento es nulo ó no.
      */
-    protected void SetupToolbar(Toolbar toolbar)
+    protected void setupToolbar(Toolbar toolbar)
     {
         if (toolbar == null)
         {
