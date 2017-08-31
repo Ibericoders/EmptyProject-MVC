@@ -8,6 +8,8 @@
     <string name="generic_error">Lo sentimos, ha ocurrido un error.</string>
     <string name="alls_masc">Todos</string>
     <string name="alls">Todas</string>
+    <string name="generic_cancel">Cancelar</string>
+    <string name="generic_save">Guardar</string>
 
 
     <!-- DialogManagerUtils -->
@@ -26,4 +28,29 @@
     <string name="roll_description">Roll the dice, bro.</string>
     <string name="text_random_number">0</string>
     <string name="text_pick_random"> O elige tu propio rango</string>
+
+
+    <!-- ExpensesActivity -->
+
+    <string name="text_expense_name">Nombre del Gasto</string>
+    <string name="text_category">Categoría</string>
+    <string name="text_expenses_date">Fecha</string>
+    <string name="text_expense_description">Descripción</string>
+    <string name="text_expense_amount">Cantidad</string>
+    <string name="dialog_category_chooser">Selecciona la categoría de filtro</string>
+    <string name="expenses_selectedcategory">Categoría seleccionada: </string>
+    <string name="expenses_add_expense">AÑADIR GASTO</string>
+    <string name="expenses_add_to_pot">AÑADIR AL BOTE</string>
+    <string name="expenses_email_text">Email</string>
+    <string name="expenses_export">Exportar</string>
+    <string name="expenses_potvalue">Valor del bote:</string>
+    <string name="expenses_export_bbdd">Exportar</string>
+    <string name="expenses_import_bbdd">Importar BBDD</string>
+    <string name="expenses_filter">Filtro</string>
+
+    <string name="expensescategory_common">Gastos comunes</string>
+    <string name="expensescategory_fooddrink">Gastos de alimentación</string>
+    <string name="expensescategory_education">Gastos de educación</string>
+    <string name="expensescategory_other">Otros gastos</string>
+    <string name="expensescategory_extra">Gastos extra/No planeados</string>
 </resources>

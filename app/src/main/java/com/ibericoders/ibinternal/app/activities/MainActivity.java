@@ -12,6 +12,7 @@ import com.crashlytics.android.answers.ContentViewEvent;
 import com.crashlytics.android.answers.CustomEvent;
 import com.ibericoders.ibinternal.R;
 import com.ibericoders.ibinternal.app.activities.dices.DicesActivity;
+import com.ibericoders.ibinternal.app.activities.expenses.ExpensesActivity;
 import com.ibericoders.ibinternal.app.activities.generics.InflatedActivity;
 
 import butterknife.BindView;
@@ -106,8 +107,8 @@ public class MainActivity extends InflatedActivity implements View.OnClickListen
                         .logCustom(new CustomEvent("Module access from Main")
                                 .putCustomAttribute("Module", "Gastos"));
 
-                //Intent intent_expenses=new Intent(this, MainExpensesActivity.class);
-                //this.startActivity(intent_expenses);
+                Intent intent_expenses=new Intent(this, ExpensesActivity.class);
+                this.startActivity(intent_expenses);
                 break;
 
             case R.id.mainact_actsaccess:

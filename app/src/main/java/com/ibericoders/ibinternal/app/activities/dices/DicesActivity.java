@@ -29,7 +29,7 @@ public class DicesActivity extends InflatedActivity implements View.OnClickListe
     /*
      * Constantes de la actividad
      */
-    private static final int maxSeekBar = 20;
+    private static final int MAXSEEKBAR = 20;
 
 
     /*
@@ -97,7 +97,7 @@ public class DicesActivity extends InflatedActivity implements View.OnClickListe
     @Override
     protected void fillView() {
 
-        seekBarMaximum.setMax(maxSeekBar); //El máximo numero aleatorio es 20.
+        seekBarMaximum.setMax(MAXSEEKBAR); //El máximo numero aleatorio es 20.
         textViewMaximum.setText(String.valueOf(maxNumberEstablished));
 
 

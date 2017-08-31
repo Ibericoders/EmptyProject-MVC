@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/filtrar"
+        android:title="@string/expenses_filter"
+        android:icon="@drawable/ic_filtrar"/>
+    <item
+        android:id="@+id/importar"
+        android:title="@string/expenses_import_bbdd"
+        android:icon="@drawable/ic_importar"/>
+    <item
+        android:id="@+id/export"
+        android:title="@string/expenses_export_bbdd"
+        android:icon="@drawable/ic_exportar"/>
+</menu>

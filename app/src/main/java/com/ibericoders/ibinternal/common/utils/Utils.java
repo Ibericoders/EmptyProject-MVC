@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.LongSparseArray;
 
+import com.ibericoders.ibinternal.R;
 import com.ibericoders.ibinternal.common.constants.Constants;
 
 import java.text.DateFormat;
@@ -40,6 +41,8 @@ public class Utils {
      */
     public static final String DATE_FORMAT_yyyyMMdd = "yyyyMMdd";
     public static final String DATE_FORMAT_ddMM = "dd/MM";
+
+
 
     public static double[] insertTwoArrays (double[] firstArray, double[] secondArray){
 
@@ -382,4 +385,74 @@ public class Utils {
         DisplayMetrics metrics = context.getResources().getDisplayMetrics();
         return px / ((float)metrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT);
     }
+
+    public static String getExpensesCategoryString(Context ctx, int category){
+
+        switch (category){
+
+            case Constants.CATEGORY_COMMON:
+
+                return ctx.getResources().getString(R.string.expensescategory_common);
+
+            case Constants.CATEGORY_FOOD_DRINK:
+
+                return ctx.getResources().getString(R.string.expensescategory_fooddrink);
+
+            case Constants.CATEGORY_EDUCATION:
+
+                return ctx.getResources().getString(R.string.expensescategory_education);
+
+            case Constants.CATEGORY_OTHER:
+
+                return ctx.getResources().getString(R.string.expensescategory_other);
+
+            case Constants.CATEGORY_EXTRA_NONPLANNED:
+
+                return ctx.getResources().getString(R.string.expensescategory_extra);
+
+        }
+
+        return null;
+    }
+
+    public static int getExpensesCategoryInt(Context ctx, String category){
+
+
+        if (category.equals(ctx.getResources().getString(R.string.expensescategory_common))){
+
+            return Constants.CATEGORY_COMMON;
+
+        } else if (category.equals(ctx.getResources().getString(R.string.expensescategory_fooddrink))){
+
+            return Constants.CATEGORY_FOOD_DRINK;
+
+        } else if (category.equals(ctx.getResources().getString(R.string.expensescategory_education))){
+
+            return Constants.CATEGORY_EDUCATION;
+
+        } else if (category.equals(ctx.getResources().getString(R.string.expensescategory_other))){
+
+            return Constants.CATEGORY_OTHER;
+
+        } else if (category.equals(ctx.getResources().getString(R.string.expensescategory_extra))) {
+
+            return Constants.CATEGORY_EXTRA_NONPLANNED;
+        }
+
+        return -1;
+    }
+
+    public static List<String> getCategoriesList(Context ctx){
+
+        ArrayList<String> categories = new ArrayList<>();
+
+        categories.add(ctx.getResources().getString(R.string.expensescategory_common));
+        categories.add(ctx.getResources().getString(R.string.expensescategory_fooddrink));
+        categories.add(ctx.getResources().getString(R.string.expensescategory_education));
+        categories.add(ctx.getResources().getString(R.string.expensescategory_other));
+        categories.add(ctx.getResources().getString(R.string.expensescategory_extra));
+
+        return categories;
+    }
+
 }

@@ -41,7 +41,7 @@ public class Constants {
     /**
      * IDs de idiomas para codificado.
      */
-    public static int LANGUAGE_ID_SPANISH = 1;
+    public static final int LANGUAGE_ID_SPANISH = 1;
 
     /**
      * Nombre para las preferencias de configuración.
@@ -54,4 +54,15 @@ public class Constants {
     public static final long Millis_In_A_Week = 604800000;
     public static final long Millis_In_A_Day = 86400000;
     public static final int Days_In_A_Week = 7;
+
+
+    /**
+     * Constantes de categorías de gasto
+     */
+    public static final int CATEGORY_COMMON = 1;
+    public static final int CATEGORY_FOOD_DRINK = 2;
+    public static final int CATEGORY_EDUCATION = 3;
+    public static final int CATEGORY_OTHER = 4;
+    public static final int CATEGORY_EXTRA_NONPLANNED = 5;
+
 }

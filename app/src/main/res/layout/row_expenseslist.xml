@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:cardBackgroundColor="@android:color/white"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="@dimen/margin_padding_size_xxsmall"
+        android:weightSum="2">
+
+        <ImageView
+            android:id="@+id/expenseslistrow_categoryicon_iv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.4"
+            app:srcCompat="@mipmap/ic_launcher"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="0.6">
+
+            <TextView
+
+                android:id="@+id/expenseslistrow_expensename_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/margin_padding_size_zero"
+                android:paddingBottom="@dimen/margin_padding_size_xsmall"
+                android:paddingStart="@dimen/margin_padding_size_xxsmall"
+                android:paddingEnd="@dimen/margin_padding_size_xxsmall"
+                android:text="@string/text_expense_name"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:textSize="@dimen/text_size_xmedium"
+                android:textStyle="bold" />
+
+            <TextView
+
+                android:id="@+id/expenseslistrow_expensedescription_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/margin_padding_size_small"
+                android:paddingBottom="@dimen/margin_padding_size_xsmall"
+                android:paddingStart="@dimen/margin_padding_size_medium"
+                android:paddingEnd="@dimen/margin_padding_size_xxsmall"
+                android:text="@string/text_expense_description"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textSize="@dimen/text_size_medium" />
+
+            <TextView
+
+                android:id="@+id/expenseslistrow_expenseamount_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/margin_padding_size_xsmall"
+                android:paddingBottom="@dimen/margin_padding_size_xsmall"
+                android:paddingStart="@dimen/margin_padding_size_medium"
+                android:paddingEnd="@dimen/margin_padding_size_xxsmall"
+                android:text="@string/text_expense_amount"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textSize="@dimen/text_size_medium" />
+
+            <TextView
+
+                android:id="@+id/expenseslistrow_expensedate_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/margin_padding_size_xsmall"
+                android:paddingBottom="@dimen/margin_padding_size_zero"
+                android:paddingStart="@dimen/margin_padding_size_medium"
+                android:paddingEnd="@dimen/margin_padding_size_xxsmall"
+                android:text="@string/text_expenses_date"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textSize="@dimen/text_size_medium" />
+
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>
