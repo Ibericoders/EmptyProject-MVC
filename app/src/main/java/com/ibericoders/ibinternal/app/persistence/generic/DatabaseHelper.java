@@ -29,6 +29,11 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
         //Ejecutar la instrucción 1.
         db.execSQL(expensesTableCreation);
+
+        String recordsTableCreation = "create table recordsTable (_id integer primary key autoincrement,";
+        recordsTableCreation += "date long,title text,act text,nextmeeting long,attendees text)";
+
+        db.execSQL(recordsTableCreation);
     }
 
     @Override
