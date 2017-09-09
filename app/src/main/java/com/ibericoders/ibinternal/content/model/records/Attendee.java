@@ -1,5 +1,6 @@
 package com.ibericoders.ibinternal.content.model.records;
 
+import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.google.gson.Gson;
@@ -59,4 +60,39 @@ public class Attendee implements Parcelable {
 
         return gson.fromJson(attendee, Attendee.class);
     }
+
+
+    /*
+     * Implementación de Parcelable
+     */
+    protected Attendee(Parcel in) {
+        name = in.readString();
+        email = in.readString();
+        workPosition = in.readString();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(email);
+        dest.writeString(workPosition);
+    }
+
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<Attendee> CREATOR = new Parcelable.Creator<Attendee>() {
+        @Override
+        public Attendee createFromParcel(Parcel in) {
+            return new Attendee(in);
+        }
+
+        @Override
+        public Attendee[] newArray(int size) {
+            return new Attendee[size];
+        }
+    };
 }

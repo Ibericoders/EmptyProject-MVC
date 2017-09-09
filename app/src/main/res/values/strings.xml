@@ -53,4 +53,12 @@
     <string name="expensescategory_education">Gastos de educación</string>
     <string name="expensescategory_other">Otros gastos</string>
     <string name="expensescategory_extra">Gastos extra/No planeados</string>
+
+
+
+    <!-- RecordsActivity -->
+
+    <string name="newrecord_tab_meeting">Reunión</string>
+    <string name="newrecord_tab_attendees">Participantes</string>
+    <string name="newrecord_tab_record">Memoria</string>
 </resources>

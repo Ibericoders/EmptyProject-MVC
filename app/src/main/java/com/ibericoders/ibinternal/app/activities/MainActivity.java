@@ -14,6 +14,7 @@ import com.ibericoders.ibinternal.R;
 import com.ibericoders.ibinternal.app.activities.dices.DicesActivity;
 import com.ibericoders.ibinternal.app.activities.expenses.ExpensesActivity;
 import com.ibericoders.ibinternal.app.activities.generics.InflatedActivity;
+import com.ibericoders.ibinternal.app.activities.records.RecordsActivity;
 
 import butterknife.BindView;
 import io.fabric.sdk.android.Fabric;
@@ -117,8 +118,8 @@ public class MainActivity extends InflatedActivity implements View.OnClickListen
                         .logCustom(new CustomEvent("Module access from Main")
                                 .putCustomAttribute("Module", "Actas"));
 
-                //Intent intent_act=new Intent(this, MainActsActivity.class);
-                //this.startActivity(intent_act);
+                Intent intent_act=new Intent(this, RecordsActivity.class);
+                this.startActivity(intent_act);
                 break;
         }
     }

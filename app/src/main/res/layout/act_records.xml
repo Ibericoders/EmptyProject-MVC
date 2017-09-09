@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        layout="@layout/g_toolbar"
+        android:id="@id/toolbar_tb"/>
+
+    <ListView
+        android:id="@+id/records_list_lv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar_tb"
+        android:paddingTop="@dimen/margin_padding_size_xxsmall"
+        android:paddingBottom="@dimen/margin_padding_size_xxsmall"
+        android:scrollbars="vertical"
+        android:scrollbarStyle="insideOverlay"/>
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/records_new_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="@dimen/margin_padding_size_xxsmall"
+        android:clickable="true"
+        android:onClick="nueva"
+        app:elevation="10dp"
+        app:fabSize="normal"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+</RelativeLayout>

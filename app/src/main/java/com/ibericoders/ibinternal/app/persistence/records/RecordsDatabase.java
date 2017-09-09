@@ -30,8 +30,6 @@ public class RecordsDatabase {
     }
 
 
-    //-----------------------------Recuperar Actas--------------------------------------------------
-
     public List<Record> getAllRecords() {
 
         String sql = "select * from recordsTable";
@@ -57,10 +55,12 @@ public class RecordsDatabase {
 
             records.add(record);
         }
+
+        c.close();
         return records;
     }
-    //----------------------------------------------------------------------------------------------
-    //---------------------------------Metodo guardar----------------------------------------------
+
+
     public void saveRecord(Record record) {
 
         List<Attendee> attendees = record.getAttendees();
@@ -76,9 +76,8 @@ public class RecordsDatabase {
         mDatabase.execSQL(sql);
 
     }
-    //----------------------------------------------------------------------------------------------
 
-    //-------------------------------Metodo recuperar fecha------------------------------------------
+
     public Record getRecordFromDate(long date) {
         String sql = "select * from recordsTable where date =" + date;
 
@@ -86,7 +85,7 @@ public class RecordsDatabase {
 
         Record record = null;
 
-        if (c.moveToNext()){
+        if (c.moveToNext()) {
 
             String attendees = c.getString(5);
 
@@ -94,7 +93,7 @@ public class RecordsDatabase {
 
             ArrayList<Attendee> attendeeList = new ArrayList<>();
 
-            for (int i = 0; i < attendeesArray.length; i++){
+            for (int i = 0; i < attendeesArray.length; i++) {
 
                 attendeeList.add(Attendee.fromJson(attendeesArray[i]));
             }
@@ -102,7 +101,8 @@ public class RecordsDatabase {
             record = new Record(c.getLong(1), attendeeList, c.getString(2), c.getString(3), c.getLong(4));
         }
 
+        c.close();
+
         return record;
     }
-    //----------------------------------------------------------------------------------------------
 }
