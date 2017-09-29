@@ -2,11 +2,11 @@ package com.ibericoders.ibinternal.app.activities.records;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.view.View;
 import android.widget.FrameLayout;
 
 import com.ibericoders.ibinternal.R;
 import com.ibericoders.ibinternal.app.activities.generics.InflatedActivity;
+import com.ibericoders.ibinternal.app.fragments.records.MeetingFragment;
 
 import butterknife.BindView;
 
@@ -73,6 +73,11 @@ public class NewRecordActivity extends InflatedActivity implements TabLayout.OnT
         switch(tabs.getSelectedTabPosition()){
 
             case 0:
+
+                MeetingFragment meetingFragment = MeetingFragment.newInstance();
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.newrecord_fragmentplaceholder, meetingFragment)
+                        .commit();
                 break;
 
             case 1:

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <LinearLayout
+        android:id="@+id/fmeeting_firststeplayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:padding="@dimen/margin_padding_size_xxsmall"
+        android:orientation="vertical"
+        android:divider="@color/colorPrimary"
+        android:showDividers="middle|end">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reunión"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_size_medium"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/margin_padding_size_xxsmall"
+            android:paddingBottom="@dimen/margin_padding_size_xxsmall"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|end"
+                    android:text="Día:" />
+
+                <EditText
+                    android:id="@+id/recordsmeeting_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Hora:"/>
+
+                <EditText
+                    android:id="@+id/recordsmeeting_hour"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/margin_padding_size_medium"
+            android:paddingBottom="@dimen/margin_padding_size_xxsmall"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/recordsmeeting_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/recordsmeeting_locationpicker"/>
+
+            <ImageView
+                android:id="@+id/recordsmeeting_locationpicker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                app:srcCompat="@drawable/ic_exportar"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="@color/colorAccent"
+        android:layout_below="@id/fmeeting_firststeplayout"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/margin_padding_size_xxsmall"
+        android:orientation="vertical"
+        android:layout_below="@id/fmeeting_firststeplayout">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Añadir participante"
+            style="@style/Widget.AppCompat.Button.Colored"/>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="@dimen/margin_padding_size_xxsmall"
+            android:paddingBottom="@dimen/margin_padding_size_xxsmall"
+            android:scrollbars="vertical"
+            android:scrollbarStyle="insideOverlay"/>
+    </LinearLayout>
+</RelativeLayout>

@@ -59,6 +59,6 @@
     <!-- RecordsActivity -->
 
     <string name="newrecord_tab_meeting">Reunión</string>
-    <string name="newrecord_tab_attendees">Participantes</string>
+    <string name="newrecord_tab_review">Review</string>
     <string name="newrecord_tab_record">Memoria</string>
 </resources>

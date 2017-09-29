@@ -24,16 +24,18 @@
             android:text="@string/newrecord_tab_meeting" />
 
         <android.support.design.widget.TabItem
-            android:id="@+id/newrecord_attendees_ti"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/newrecord_tab_attendees" />
-
-        <android.support.design.widget.TabItem
             android:id="@+id/newrecord_record_ti"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/newrecord_tab_record" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/newrecord_attendees_ti"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/newrecord_tab_review" />
+
+
     </android.support.design.widget.TabLayout>
 
     <FrameLayout
