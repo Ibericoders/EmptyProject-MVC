@@ -20,15 +20,6 @@ public class Record implements Parcelable{
     private String act;
     private Long nextMeeting;
 
-    public Record(Long date, Long nextMeeting) {
-        this.date = date;
-        this.nextMeeting = nextMeeting;
-    }
-
-    public Record(String title, String act) {
-        this.title = title;
-        this.act = act;
-    }
 
     public Record(Long date, List<Attendee> attendees, String title, String act, Long nextMeeting) {
         this.date = date;

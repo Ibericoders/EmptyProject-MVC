@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/resumeDateTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fecha de la reunion:" />
+
+    <TextView
+        android:id="@+id/resumeAssistanceTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Asistentes:" />
+
+    <TextView
+        android:id="@+id/resumeTopicTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Temas tratados:" />
+
+    <TextView
+        android:id="@+id/resumeTopicExtendedTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Resumen de la reunion" />
+
+    <TextView
+        android:id="@+id/resumeNextDateTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="proximo encuentro" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Guardar Acta" />
+</LinearLayout>

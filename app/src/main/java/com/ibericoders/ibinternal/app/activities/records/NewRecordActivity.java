@@ -7,6 +7,11 @@ import android.widget.FrameLayout;
 import com.ibericoders.ibinternal.R;
 import com.ibericoders.ibinternal.app.activities.generics.InflatedActivity;
 import com.ibericoders.ibinternal.app.fragments.records.MeetingFragment;
+import com.ibericoders.ibinternal.app.fragments.records.MemoryFragment;
+import com.ibericoders.ibinternal.content.model.records.Attendee;
+import com.ibericoders.ibinternal.content.model.records.Record;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 
@@ -32,10 +37,14 @@ public class NewRecordActivity extends InflatedActivity implements TabLayout.OnT
     @BindView(R.id.newrecord_fragmentplaceholder)
     FrameLayout fragmentContainer;
 
+    MeetingFragment meetingFragment;
+
     /*
      * Atributos de negocio
      */
-
+    ArrayList<Attendee> atList=new ArrayList<>();
+    Attendee att=new Attendee(null,null,null);
+    public Record rec=new Record(null,null,null,null,null);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +56,12 @@ public class NewRecordActivity extends InflatedActivity implements TabLayout.OnT
         setupToolbar(null);
         fillView();
         initListeners();
+
+        //activamos el fragment 0 por defecto
+        MeetingFragment meetingFragment = MeetingFragment.newInstance(rec,att,atList);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.newrecord_fragmentplaceholder, meetingFragment)
+                .commit();
     }
 
     @Override
@@ -74,16 +89,24 @@ public class NewRecordActivity extends InflatedActivity implements TabLayout.OnT
 
             case 0:
 
-                MeetingFragment meetingFragment = MeetingFragment.newInstance();
+                meetingFragment = MeetingFragment.newInstance(rec,att,atList);
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.newrecord_fragmentplaceholder, meetingFragment)
                         .commit();
                 break;
 
             case 1:
+                MeetingFragment meetingFragment2 = MeetingFragment.newInstance(rec,att,atList);
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.newrecord_fragmentplaceholder, meetingFragment2)
+                        .commit();
                 break;
 
             case 2:
+                MeetingFragment meetingFragment3 = MeetingFragment.newInstance(rec,att,atList);
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.newrecord_fragmentplaceholder, meetingFragment3)
+                        .commit();
                 break;
         }
     }
@@ -91,7 +114,26 @@ public class NewRecordActivity extends InflatedActivity implements TabLayout.OnT
     @Override
     public void onTabUnselected(TabLayout.Tab tab) {
 
-        //¿Qué hacer cuando una tab deja de estar seleccionada?
+        switch(tab.getPosition()){
+
+            case 0:
+
+                rec.setTitle(meetingFragment.DataSender().getTitle());
+                rec.setDate(meetingFragment.DataSender().getDate());
+                rec.setAttendees(meetingFragment.DataSender().getAttendees());
+
+                break;
+
+            case 1:
+                MemoryFragment mem=new MemoryFragment();
+                rec.setAct(mem.dataSender().getAct());
+                rec.setNextMeeting(mem.dataSender().getNextMeeting());
+                break;
+
+            case 2:
+
+                break;
+        }
     }
 
     @Override

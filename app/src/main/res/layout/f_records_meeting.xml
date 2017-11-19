@@ -25,72 +25,43 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/margin_padding_size_xxsmall"
-            android:paddingBottom="@dimen/margin_padding_size_xxsmall"
-            android:orientation="horizontal"
-            android:weightSum="2">
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical|end"
-                    android:text="Día:" />
-
-                <EditText
-                    android:id="@+id/recordsmeeting_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="Hora:"/>
-
-                <EditText
-                    android:id="@+id/recordsmeeting_hour"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-            </LinearLayout>
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/margin_padding_size_medium"
-            android:paddingBottom="@dimen/margin_padding_size_xxsmall"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/recordsmeeting_locationpicker"
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_alignParentEnd="true"
-                app:srcCompat="@drawable/ic_exportar"/>
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|end"
+                android:text="Fecha:" />
 
             <EditText
-                android:id="@+id/recordsmeeting_location"
+                android:id="@+id/recordsmeeting_date"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_toStartOf="@id/recordsmeeting_locationpicker"/>
+                android:layout_height="match_parent" />
 
+        </LinearLayout>
 
-        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical|end"
+                android:text="Temas del día:" />
+
+            <EditText
+                android:id="@+id/recordsmeeting_topic"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+
     </LinearLayout>
 
     <View

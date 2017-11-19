@@ -15,12 +15,12 @@ public class Attendee implements Parcelable {
 
     private String name;
     private String email;
-    private String workPosition;
+
 
     public Attendee(String name, String email, String workPosition) {
         this.name = name;
         this.email = email;
-        this.workPosition = workPosition;
+
     }
 
     public String getName() {
@@ -39,13 +39,6 @@ public class Attendee implements Parcelable {
         this.email = email;
     }
 
-    public String getWorkPosition() {
-        return workPosition;
-    }
-
-    public void setWorkPosition(String workPosition) {
-        this.workPosition = workPosition;
-    }
 
     public static String toJson(Attendee attendee){
 
@@ -68,7 +61,6 @@ public class Attendee implements Parcelable {
     protected Attendee(Parcel in) {
         name = in.readString();
         email = in.readString();
-        workPosition = in.readString();
     }
 
     @Override
@@ -80,7 +72,6 @@ public class Attendee implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
         dest.writeString(email);
-        dest.writeString(workPosition);
     }
 
     @SuppressWarnings("unused")

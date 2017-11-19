@@ -10,15 +10,15 @@
         android:id="@+id/addr_edittext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/margin_padding_size_xxxsmall"
-        android:gravity="top|start"
-        android:layout_alignParentTop="true"
         android:layout_above="@id/fmeeting_firststeplayout"
+        android:layout_alignParentTop="true"
+        android:gravity="top|start"
         android:inputType="text|textMultiLine"
         android:minLines="10"
+        android:padding="@dimen/margin_padding_size_xxxsmall"
         android:scrollHorizontally="false"
         android:scrollbars="vertical"
-        android:text=""/>
+        android:text="resumen de la reunion..." />
 
     <LinearLayout
         android:id="@+id/fmeeting_firststeplayout"
@@ -40,65 +40,23 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/margin_padding_size_xxsmall"
-            android:paddingBottom="@dimen/margin_padding_size_xxsmall"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical|end"
-                    android:text="Día:" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="Hora:"/>
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-            </LinearLayout>
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/margin_padding_size_medium"
-            android:paddingBottom="@dimen/margin_padding_size_xxsmall"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <ImageView
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_alignParentEnd="true"
-                app:srcCompat="@drawable/ic_exportar"/>
-        </RelativeLayout>
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|end"
+                android:text="Día:" />
+
+            <EditText
+                android:id="@+id/addr_nextDate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </RelativeLayout>
