@@ -75,12 +75,6 @@
             android:paddingBottom="@dimen/margin_padding_size_xxsmall"
             android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/recordsmeeting_location"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_toStartOf="@id/recordsmeeting_locationpicker"/>
-
             <ImageView
                 android:id="@+id/recordsmeeting_locationpicker"
                 android:layout_width="wrap_content"
@@ -88,6 +82,14 @@
                 android:layout_centerVertical="true"
                 android:layout_alignParentEnd="true"
                 app:srcCompat="@drawable/ic_exportar"/>
+
+            <EditText
+                android:id="@+id/recordsmeeting_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/recordsmeeting_locationpicker"/>
+
+
         </RelativeLayout>
     </LinearLayout>
 

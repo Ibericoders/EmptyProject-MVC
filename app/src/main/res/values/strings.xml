@@ -61,4 +61,12 @@
     <string name="newrecord_tab_meeting">Reunión</string>
     <string name="newrecord_tab_review">Review</string>
     <string name="newrecord_tab_record">Memoria</string>
+
+
+    <!-- ???????? -->
+
+    <string name="GPSAlertDialogTitle">WHAT??</string>
+    <string name="GPSAlertDialogMessage">WHAT??</string>
+    <string name="action_settings">what???</string>
+    <string name="label_cancel">what????</string>
 </resources>

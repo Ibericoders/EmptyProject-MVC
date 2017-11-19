@@ -18,7 +18,7 @@
         android:minLines="10"
         android:scrollHorizontally="false"
         android:scrollbars="vertical"
-        android:text="fndvkhsbedfcnskzd xc bzlcnakzbxicdlmxbckbzxhfcpjxlcjbzkxkbzxkckzxkjcbzkxkbzxkdbckzß∑dcmbzvjxhdvcagzsdxlnakzsvxdcjzxlcqOAS<BZXKBAJXVCJBZDKBSLZJDOAUWESODJ<LJZBXKJ<BZKH<SZDNKA<HGSKZDHXLJ<BZJGAK<ZDLB<KBIAS"/>
+        android:text=""/>
 
     <LinearLayout
         android:id="@+id/fmeeting_firststeplayout"
@@ -90,8 +90,7 @@
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_toStartOf=""/>
+                android:layout_height="wrap_content" />
 
             <ImageView
                 android:layout_width="wrap_content"
