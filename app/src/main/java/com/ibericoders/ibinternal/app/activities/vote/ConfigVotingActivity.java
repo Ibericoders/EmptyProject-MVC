@@ -221,9 +221,9 @@ public class ConfigVotingActivity extends AppCompatActivity {
             editOpenAnswer.setVisibility(View.VISIBLE);
             fabAddOpenAnswer.setVisibility(View.VISIBLE);
         }else{
-            textInputLayoutAnswers.setVisibility(View.INVISIBLE);
-            editOpenAnswer.setVisibility(View.INVISIBLE);
-            fabAddOpenAnswer.setVisibility(View.INVISIBLE);
+            textInputLayoutAnswers.setVisibility(View.GONE);
+            editOpenAnswer.setVisibility(View.GONE);
+            fabAddOpenAnswer.setVisibility(View.GONE);
         }
     }
 }

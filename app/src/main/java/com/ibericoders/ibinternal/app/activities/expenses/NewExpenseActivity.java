@@ -23,6 +23,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Desc:
@@ -30,9 +31,10 @@ import butterknife.BindView;
  * Version: 1.0
  */
 
-public class NewExpenseActivity extends InflatedActivity implements View.OnClickListener{
+public class NewExpenseActivity extends InflatedActivity{
 
 
+    private static final String PREFS_POT = "bote";
     /*
      * Atributos de UI
      */
@@ -53,9 +55,6 @@ public class NewExpenseActivity extends InflatedActivity implements View.OnClick
 
     @BindView(R.id.newexpense_cancel)
     Button cancel;
-
-    @BindView(R.id.newexpense_save)
-    Button save;
 
     /*
      * Atributos de negocio
@@ -95,6 +94,10 @@ public class NewExpenseActivity extends InflatedActivity implements View.OnClick
     protected void fillView() {
 
         sp.setAdapter(mAdapter);
+    }
+
+    @Override
+    protected void initListeners() {
 
         sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -110,82 +113,68 @@ public class NewExpenseActivity extends InflatedActivity implements View.OnClick
         });
     }
 
-    @Override
-    protected void initListeners() {
+    @OnClick(R.id.edt_fechaGasto)
+    public void getExpenseDate(){
+        Calendar cal=Calendar.getInstance();
+        //Generar cuadro de dialogo de date
+        DatePickerDialog dgDate=new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                //Cada vez que se seleccione una date se genera una cadena con los datos de la feccha seleccionada.
+                String fechaselec=view.getDayOfMonth()+"/"+(view.getMonth()+1)+"/"+view.getYear();
+                //Volcamos la cadena de date en el TextView
+                date.setText(fechaselec);
+            }
+        }, cal.get(Calendar.YEAR),cal.get(Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH));
 
-        date.setOnClickListener(this);
-        cancel.setOnClickListener(this);
-        save.setOnClickListener(this);
+        dgDate.show();
     }
 
-    @Override
-    public void onClick(View view) {
+    @OnClick(R.id.newexpense_cancel)
+    public void cancelRequest(){
+        this.finish();
+    }
 
-        switch (view.getId()){
+    @OnClick(R.id.newexpense_save)
+    public void saveData(){
 
-            case R.id.edt_fechaGasto:
+        if(name.getText().length() > 0 && description.getText().length() > 0 && amount.getText().length() > 0
+                && date.getText().length() > 0 && cat != null && !cat.equals("Seleccione categoría...")){
 
-                Calendar cal=Calendar.getInstance();
-                //Generar cuadro de dialogo de date
-                DatePickerDialog dgDate=new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        //Cada vez que se seleccione una date se genera una cadena con los datos de la feccha seleccionada.
-                        String fechaselec=view.getDayOfMonth()+"/"+(view.getMonth()+1)+"/"+view.getYear();
-                        //Volcamos la cadena de date en el TextView
-                        date.setText(fechaselec);
-                    }
-                }, cal.get(Calendar.YEAR),cal.get(Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH));
+            Expense g = new Expense(name.getText().toString(), description.getText().toString(),
+                    Double.parseDouble(amount.getText().toString()), date.getText().toString(),
+                    Utils.getExpensesCategoryInt(this, cat));
 
-                dgDate.show();
-                break;
+            if(!expensesData.checkExpense(g.getName())){
 
-            case R.id.newexpense_cancel:
+                expensesData.saveNewExpense(g);
+                Toast.makeText(this, "Gasto introducido correctamente", Toast.LENGTH_LONG).show();
 
-                this.finish();
-                break;
+                SharedPreferences prefs=getSharedPreferences(PREFS_POT, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor=prefs.edit();
 
-            case R.id.newexpense_save:
+                if(prefs.getString(PREFS_POT,"null").equals("null")){
 
-                if(name.getText().length() > 0 && description.getText().length() > 0 && amount.getText().length() > 0
-                        && date.getText().length() > 0 && cat != null && !cat.equals("Seleccione categoría...")){
+                    editor.remove(PREFS_POT);
+                    editor.putString(PREFS_POT,"-"+String.valueOf(g.getAmount()));
 
-                    Expense g = new Expense(name.getText().toString(), description.getText().toString(),
-                            Double.parseDouble(amount.getText().toString()), date.getText().toString(),
-                            Utils.getExpensesCategoryInt(this, cat));
-
-                    if(!expensesData.checkExpense(g.getName())){
-
-                        expensesData.saveNewExpense(g);
-                        Toast.makeText(this, "Gasto introducido correctamente", Toast.LENGTH_LONG).show();
-
-                        SharedPreferences prefs=getSharedPreferences("bote", Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor=prefs.edit();
-
-                        if(prefs.getString("bote","null").equals("null")){
-
-                            editor.remove("bote");
-                            editor.putString("bote","-"+String.valueOf(g.getAmount()));
-
-                        }else{
-
-                            double valorAnterior=Double.parseDouble(prefs.getString("bote",null));
-                            String res=String.valueOf(valorAnterior-g.getAmount());
-                            editor.remove("bote");
-                            editor.putString("bote",res);
-                        }
-                        editor.apply();
-                        this.finish();
-
-                    }else{
-
-                        Toast.makeText(this, "Gasto ya introducido", Toast.LENGTH_LONG).show();
-                    }
                 }else{
 
-                    Toast.makeText(this, "Es necesario completar todos los campos", Toast.LENGTH_LONG).show();
+                    double valorAnterior=Double.parseDouble(prefs.getString(PREFS_POT,null));
+                    String res=String.valueOf(valorAnterior-g.getAmount());
+                    editor.remove(PREFS_POT);
+                    editor.putString(PREFS_POT,res);
                 }
-                break;
+                editor.apply();
+                this.finish();
+
+            }else{
+
+                Toast.makeText(this, "Gasto ya introducido", Toast.LENGTH_LONG).show();
+            }
+        }else{
+
+            Toast.makeText(this, "Es necesario completar todos los campos", Toast.LENGTH_LONG).show();
         }
     }
 }
