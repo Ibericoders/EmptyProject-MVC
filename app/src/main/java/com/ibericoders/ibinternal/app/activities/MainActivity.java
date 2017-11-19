@@ -15,6 +15,7 @@ import com.ibericoders.ibinternal.app.activities.dices.DicesActivity;
 import com.ibericoders.ibinternal.app.activities.expenses.ExpensesActivity;
 import com.ibericoders.ibinternal.app.activities.generics.InflatedActivity;
 import com.ibericoders.ibinternal.app.activities.records.RecordsActivity;
+import com.ibericoders.ibinternal.app.activities.vote.ConfigVotingActivity;
 
 import butterknife.BindView;
 import io.fabric.sdk.android.Fabric;
@@ -88,8 +89,8 @@ public class MainActivity extends InflatedActivity implements View.OnClickListen
                         .logCustom(new CustomEvent("Module access from Main")
                         .putCustomAttribute("Module", "Votaciones"));
 
-                //Intent intent_voting=new Intent(this, ConfigVotingActivity.class);
-                //this.startActivity(intent_voting);
+                Intent intent_voting=new Intent(this, ConfigVotingActivity.class);
+                this.startActivity(intent_voting);
                 break;
 
             case R.id.mainact_dicesaccess:

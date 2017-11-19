@@ -10,6 +10,8 @@
     <string name="alls">Todas</string>
     <string name="generic_cancel">Cancelar</string>
     <string name="generic_save">Guardar</string>
+    <string name="generic_text_date">Fecha</string>
+    <string name="generic_text_description">Descripción</string>
 
 
     <!-- DialogManagerUtils -->
@@ -34,8 +36,6 @@
 
     <string name="text_expense_name">Nombre del Gasto</string>
     <string name="text_category">Categoría</string>
-    <string name="text_expenses_date">Fecha</string>
-    <string name="text_expense_description">Descripción</string>
     <string name="text_expense_amount">Cantidad</string>
     <string name="dialog_category_chooser">Selecciona la categoría de filtro</string>
     <string name="expenses_selectedcategory">Categoría seleccionada: </string>
@@ -69,4 +69,26 @@
     <string name="GPSAlertDialogMessage">WHAT??</string>
     <string name="action_settings">what???</string>
     <string name="label_cancel">what????</string>
+
+    <!-- Vote -->
+    <string name="vote_votingtopic">Tema de la votación</string>
+    <string name="vote_buttonvotes">Votaciones</string>
+    <string name="vote_textview_answersnumber">Número de respuestas</string>
+    <string name="vote_typeofanswer_textview">Tipo de respuestas</string>
+    <string name="vote_openanswer">Respuesta 1</string>
+    <string name="vote_edit_question">Introduce el tema a votar</string>
+    <string name="vote_text_button_yes">Opción A / Sí</string>
+    <string name="vote_text_button_no">Opción B / NO</string>
+    <string name="vote_text_button_C">Opción C</string>
+    <string name="vote_text_button_D">Opción D</string>
+    <string name="vote_text_button_result">Calcular resultado</string>
+    <string name="vote_text_edit_number_voters">Número de participantes</string>
+    <string name="vote_button_text_share">Compartir el resultado</string>
+    <string name="vote_desctiption_votation_button">Pulsa el botón</string>
+    <string name="vote_text_view_push">Acceder a la votación</string>
+    <string name="vote_config_textview">Configura la votación</string>
+    <string name="vote_config_title_activity_votation">ConfigVotationActivity</string>
+    <string name="vote_text_votes">Votaciones</string>
+    <string name="vote_button_share">Compartir el resultado</string>
+
 </resources>
