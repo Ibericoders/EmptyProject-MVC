@@ -34,6 +34,11 @@ public class VoteActivity extends AppCompatActivity {
         textViewTopic = findViewById(R.id.textViewTopic);
         totalParticipants = 0;//iniciamos las variables numericas en 0;
         totalVotesInOptions = 0;//necesitamos esta variable para saber el total de votos que se llevan.
+
+        final int totalParts = 0;
+        Integer totalVotos = 0;
+        int totalVotosA = 0;
+
         //Recogemos los datos de la configuracion.
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -45,18 +50,37 @@ public class VoteActivity extends AppCompatActivity {
 
         arrayVotes = new ArrayList<>(totalParticipants);
 
+        int BUTTON_WIDTH = 80;
+        int BUTTON_HEIGHT = 40;
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(BUTTON_WIDTH, BUTTON_HEIGHT);
+
 
         for (int i=0; i<arrayAnswers.size(); i++){//para cada elemento de la lista de respuestas generamos un boton y le añadimos su texto.
             if (arrayAnswers.get(i)!= null){
                 Button bt = new Button(this);
                 //Si la posicion no está vacía, seteamos sus atributos
-                bt.setId(i); //cada boton tiene su id propia
+                bt.setId(View.generateViewId()); //cada boton tiene su id propia
+                bt.setTag(i);
                 bt.setText(arrayAnswers.get(i).toString()); //el string se vuelca en el boton
-                int BUTTON_WIDTH = 80;
-                bt.setWidth(BUTTON_WIDTH);
-                int BUTTON_HEIGHT = 40;
-                bt.setHeight(BUTTON_HEIGHT);
+                bt.setLayoutParams(params);
                 bt.setVisibility(View.VISIBLE);// se hace visible
+                bt.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        int position = (int) view.getTag();
+
+                        switch(position){
+
+                            case 0:
+                                break;
+                            case 1:
+                                break;
+
+                        }
+
+                        sendResults();
+                    }
+                });
                 layout.addView(bt,i);
                 }
 
