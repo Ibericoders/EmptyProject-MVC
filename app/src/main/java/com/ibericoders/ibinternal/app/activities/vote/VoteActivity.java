@@ -13,31 +13,31 @@ import com.ibericoders.ibinternal.R;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class VoteActivity extends AppCompatActivity {
 
-    private TextView textViewTopic;
+    @BindView(R.id.textViewTopic) TextView textViewTopic;
+    @BindView(R.id.layout_VoteActivity) LinearLayout layout;
     //creamos variables numericas para contar cuántos votos tiene cada opcion
 
-    private int totalParticipants, totalVotesInOptions;
+    private int totalParticipants, totalVotesInOptions, votesInA, votesInB, votesInC, votesInD;
     private String topic;
     private ArrayList arrayAnswers;
     private ArrayList<Integer> arrayVotes;
-    private LinearLayout layout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_vote);
-        layout = findViewById(R.id.layout_VoteActivity);
 
         //Procedemos a instanciar los objetos de la UI y a iniciar variables.
-        textViewTopic = findViewById(R.id.textViewTopic);
+        ButterKnife.bind(this);
         totalParticipants = 0;//iniciamos las variables numericas en 0;
         totalVotesInOptions = 0;//necesitamos esta variable para saber el total de votos que se llevan.
-
-        final int totalParts = 0;
-        Integer totalVotos = 0;
-        int totalVotosA = 0;
+        votesInA = 0; votesInB = 0; votesInC = 0; votesInD = 0;
 
         //Recogemos los datos de la configuracion.
         Bundle bundle = getIntent().getExtras();
@@ -72,71 +72,29 @@ public class VoteActivity extends AppCompatActivity {
                         switch(position){
 
                             case 0:
+                                votesInA++;
                                 break;
                             case 1:
+                                votesInB++;
+                                break;
+                            case 2:
+                                votesInC++;
+                                break;
+                            case 3:
+                                votesInD++;
                                 break;
 
                         }
-
                         sendResults();
                     }
                 });
                 layout.addView(bt,i);
                 }
-
             }
-
         }
 
-
-
-        //programamos el comportamiento de los botones
-        /*buttonA.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                votesInOptionA++;
-                totalVotesInOptions++;
-                sendResults();
-                Toast.makeText(VoteActivity.this, "Has votado correctamente.", Toast.LENGTH_SHORT).show();
-                //cada click, añade un voto a la variable correspondiente, pero sólo si
-                // el numero de participantes se ha definido antes y es mayor que 0.
-            }
-        });
-
-        buttonB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                votesInOptionB++;
-                totalVotesInOptions++;
-                sendResults();
-                Toast.makeText(VoteActivity.this, "Has votado correctamente.", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        buttonC.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                votesInOptionC++;
-                totalVotesInOptions++;
-                sendResults();
-                Toast.makeText(VoteActivity.this, "Has votado correctamente.", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        buttonD.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                votesInOptionD++;
-                totalVotesInOptions++;
-                sendResults();
-                Toast.makeText(VoteActivity.this, "Has votado correctamente.", Toast.LENGTH_SHORT).show();
-            }
-        });*/
-
-
-
-
     public void sendResults() {
+        totalVotesInOptions++;
         //le metemos un retardo de 0.5 segundos.
         try {
             Thread.sleep(500);
