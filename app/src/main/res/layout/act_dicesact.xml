@@ -33,7 +33,7 @@
             android:layout_centerHorizontal="true" />
 
         <ImageView
-            android:id="@+id/dices_imgdice_iv"
+            android:id="@+id/diceact_diceimg_iv"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/dices_title_tv"
@@ -52,7 +52,7 @@
             android:textColor="@color/colorSecondaryText"
             android:textSize="22sp"
             android:layout_marginTop="@dimen/margin_padding_size_largex"
-            android:layout_below="@id/dices_imgdice_iv"
+            android:layout_below="@id/diceact_diceimg_iv"
             android:layout_centerHorizontal="true" />
 
         <TextView
@@ -76,25 +76,31 @@
             android:layout_above="@id/dices_arbitrarynumber_tv"
             android:layout_marginBottom="@dimen/margin_padding_size_xlarge" />
 
-        <SeekBar
-            android:id="@+id/dices_seekbar_sk"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_padding_size_zero"
-            android:layout_marginBottom="@dimen/margin_padding_size_medium"
-            android:layout_above="@+id/dices_arbitrary_bt"/>
-
-        <TextView
-            android:id="@+id/dices_maximum_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_padding_size_zero"
-            android:layout_marginBottom="@dimen/margin_padding_size_medium"
-            android:textSize="18sp"
-            android:textColor="@color/colorPrimaryDark"
-            android:layout_toEndOf="@id/dices_seekbar_sk"
             android:layout_above="@+id/dices_arbitrary_bt"
-            android:layout_alignParentEnd="true"/>
+            android:layout_marginTop="@dimen/margin_padding_size_zero"
+            android:layout_marginBottom="@dimen/margin_padding_size_medium">
+
+            <TextView
+                android:id="@+id/dices_maximum_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="@dimen/margin_padding_size_medium"
+                android:textSize="18sp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_alignParentEnd="true"/>
+
+            <SeekBar
+                android:id="@+id/dices_seekbar_sk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@id/dices_maximum_tv"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
 
         <include
             layout="@layout/g_error_screen"
