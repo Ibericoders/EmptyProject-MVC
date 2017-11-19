@@ -28,7 +28,7 @@ public class VoteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_vote);
-        layout = (LinearLayout) findViewById(R.id.layout_VoteActivity);
+        layout = findViewById(R.id.layout_VoteActivity);
 
         //Procedemos a instanciar los objetos de la UI y a iniciar variables.
         textViewTopic = findViewById(R.id.textViewTopic);

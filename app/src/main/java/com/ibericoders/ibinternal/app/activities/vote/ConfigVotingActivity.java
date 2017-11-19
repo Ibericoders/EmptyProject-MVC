@@ -17,9 +17,7 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.ibericoders.ibinternal.R;
-
 import java.util.ArrayList;
 
 public class ConfigVotingActivity extends AppCompatActivity {
@@ -82,7 +80,6 @@ public class ConfigVotingActivity extends AppCompatActivity {
                 setParticipants();
 
             }
-
         });
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, new String[]{"Seleccione tipo", "Si / No", " A, B, C, D", "Respuestas personalizables"});
@@ -96,28 +93,24 @@ public class ConfigVotingActivity extends AppCompatActivity {
                 switch (cat) {
 
                     case "Si / No":
-
+                        setVisibilityForAnswers(false);
+                        break;
 
                     case "A, B, C, D":
-                        setInvisibilityForAnswers();
+                        setVisibilityForAnswers(false);
                         break;
 
                     //en el caso de que el usuario elija "Respuestas personalizables", los botones para añadir dichas respuestas se hacen visibles
                     case "Respuestas personalizables":
-                        setVisibilityForAnswers();
-
-                    default:
-                        setInvisibilityForAnswers();
-
+                        setVisibilityForAnswers(true);
+                        break;
                 }
-
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
-
         });
 
         editDate.setOnClickListener(new View.OnClickListener() {
@@ -140,7 +133,6 @@ public class ConfigVotingActivity extends AppCompatActivity {
                 dgDate.show();
             }
         });
-
     }
 
 
@@ -150,7 +142,6 @@ public class ConfigVotingActivity extends AppCompatActivity {
 
     public void vote(View v) {
         if (topicName.getText().length() > 0 && editDescription.getText().length() > 0 && editDate.getText().length() > 0 && totalParticipants > 0) {
-
             switch (cat) {
                 case "Si / No":
                     addYesNoToArray();
@@ -159,18 +150,12 @@ public class ConfigVotingActivity extends AppCompatActivity {
                 case "A, B, C, D":
                     addABCDToArray();
                     break;
-
-                //case "Respuestas personalizables":
-
-
             }
             sendConfig();
         } else {
             Toast.makeText(this, "Es necesario completar todos los campos", Toast.LENGTH_LONG).show();
         }
-
     }
-
 
     public void sendConfig() {
         //se abre una nueva actividad y se manda a traves
@@ -183,36 +168,37 @@ public class ConfigVotingActivity extends AppCompatActivity {
         intent.putExtra("cat", cat);
         intent.putExtra("date", editDate.getText());
 
-
         startActivity(intent);
     }
 
 
     public void setParticipants() {
-        textViewParticipants.setText(totalParticipants + "");
+        String text = totalParticipants + "";
+        textViewParticipants.setText(text);
     }
 
     //metodo para añadir una respuesta customizada al ArrayList de respuestas, al pulsar el boton de añadir
     public void addAnswer(View view) {
         //añadimos una respuesta al contador de respuestas
-
         if (editOpenAnswer.getText().toString().equals("")) {
             Toast.makeText(this, "Añade primero una respuesta", Toast.LENGTH_SHORT).show();
         } else {
-            if (cont < 6) {
-                answersArray.add(editOpenAnswer.getText().toString());
-                editOpenAnswer.getText().clear();
-                Toast.makeText(this, "Respuesta añadida correctamente", Toast.LENGTH_SHORT).show();
-                //añadimos el string que sacamos del editText al array de respuestas.
-                cont++;
-                editOpenAnswer.setHint("Respuesta " + (cont + 1));
+            if (cont <= 4) {
+                if (editOpenAnswer.getText().toString().equals("")) {
+                    Toast.makeText(this, "Añade primero una respuesta", Toast.LENGTH_SHORT).show();
+                } else {
+                    answersArray.add(editOpenAnswer.getText().toString());
+                    editOpenAnswer.getText().clear();
+                    Toast.makeText(this, "Respuesta añadida correctamente", Toast.LENGTH_SHORT).show();
+                    //añadimos el string que sacamos del editText al array de respuestas.
+                    cont++;
+                    editOpenAnswer.setHint("Respuesta " + (cont + 1));
+                }
             } else {
-                //si se añadido 6 respuestas, ya no se puede más.
+                //si se añadido 4 respuestas, ya no se puede más.
                 Toast.makeText(this, "Número máximo de respuestas personalizables", Toast.LENGTH_SHORT).show();
             }
         }
-
-
     }
 
     private void addYesNoToArray() {
@@ -227,19 +213,18 @@ public class ConfigVotingActivity extends AppCompatActivity {
         answersArray.add("Opción D");
     }
 
-    private void setInvisibilityForAnswers() {
-        textInputLayoutAnswers.setVisibility(View.INVISIBLE);
-        editOpenAnswer.setVisibility(View.INVISIBLE);
-        fabAddOpenAnswer.setVisibility(View.INVISIBLE);
+
+    private void setVisibilityForAnswers(boolean visible) {
+        if (visible) {
+            textInputLayoutAnswers.setVisibility(View.VISIBLE);
+            editOpenAnswer.setVisibility(View.VISIBLE);
+            fabAddOpenAnswer.setVisibility(View.VISIBLE);
+        }else{
+            textInputLayoutAnswers.setVisibility(View.INVISIBLE);
+            editOpenAnswer.setVisibility(View.INVISIBLE);
+            fabAddOpenAnswer.setVisibility(View.INVISIBLE);
+        }
     }
-
-    private void setVisibilityForAnswers() {
-        textInputLayoutAnswers.setVisibility(View.VISIBLE);
-        editOpenAnswer.setVisibility(View.VISIBLE);
-        fabAddOpenAnswer.setVisibility(View.VISIBLE);
-    }
-
-
 }
 
 
