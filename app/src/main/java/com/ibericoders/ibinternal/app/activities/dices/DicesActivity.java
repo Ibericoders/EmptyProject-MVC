@@ -36,21 +36,15 @@ public class DicesActivity extends InflatedActivity implements View.OnClickListe
      * Atributos de la UI
      */
 
+    @BindView(R.id.dices_arbitrarynumber_tv) TextView textViewRandom;    //TextView sobre el que se vuelca el resultado aleatorio
 
-    @BindView(R.id.dices_arbitrarynumber_tv)
-    TextView textViewRandom;    //TextView sobre el que se vuelca el resultado aleatorio
+    @BindView(R.id.dices_maximum_tv) TextView textViewMaximum;   //TextView en el que el usuario puede ver el numero máximo que marca.
 
-    @BindView(R.id.dices_maximum_tv)
-    TextView textViewMaximum;   //TextView en el que el usuario puede ver el numero máximo que marca.
+    @BindView(R.id.dices_arbitrary_bt) Button buttonArbitrary;
 
-    @BindView(R.id.dices_arbitrary_bt)
-    Button buttonArbitrary;
+    @BindView(R.id.dices_seekbar_sk) SeekBar seekBarMaximum;
 
-    @BindView(R.id.dices_seekbar_sk)
-    SeekBar seekBarMaximum;
-
-    @BindView(R.id.dices_imgdice_iv)
-    ImageView imgDice;    //ImageView en el que se va a posicionar el dado.
+    @BindView(R.id.diceact_diceimg_iv) ImageView imgDice;    //ImageView en el que se va a posicionar el dado.
 
 
     /*
@@ -92,6 +86,7 @@ public class DicesActivity extends InflatedActivity implements View.OnClickListe
         random = new Random();
         rolling = false;
         timer = new Timer();
+        handler = new Handler(callback);
     }
 
     @Override
@@ -107,6 +102,7 @@ public class DicesActivity extends InflatedActivity implements View.OnClickListe
     protected void initListeners() {
 
         buttonArbitrary.setOnClickListener(this);
+        imgDice.setOnClickListener(this);
 
         seekBarMaximum.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -138,14 +134,18 @@ public class DicesActivity extends InflatedActivity implements View.OnClickListe
 
             case R.id.dices_arbitrary_bt:
 
-                //GENERAMOS UN NUMERO DE 1 A 10 ALEATORIO.
-                int randomNumber = (int) (Math.random() * maxNumberEstablished + 1);
+                if (seekBarMaximum.getProgress() != 0){
 
-                //VOLCAMOS ESE NUMERO EN EL TEXTVIEW.
-                textViewRandom.setText(String.valueOf(randomNumber));
+                    //GENERAMOS UN NUMERO DE 1 A 10 ALEATORIO.
+                    int randomNumber = (int) (Math.random() * maxNumberEstablished + 1);
+
+                    //VOLCAMOS ESE NUMERO EN EL TEXTVIEW.
+                    textViewRandom.setText(String.valueOf(randomNumber));
+                }
+
                 break;
 
-            case R.id.dices_imgdice_iv:
+            case R.id.diceact_diceimg_iv:
 
                 //SI NO ESTÁ RODANDO YA, CLARO.
                 if (!rolling) {
