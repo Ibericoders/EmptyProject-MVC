@@ -105,6 +105,8 @@ public class ConfigVotingActivity extends AppCompatActivity {
                     //en el caso de que el usuario elija "Respuestas personalizables", los botones para añadir dichas respuestas se hacen visibles
                     case "Respuestas personalizables":
                         setVisibilityForAnswers(true);
+                        editOpenAnswer.setHint("Respuesta " + (cont+1));
+                        textInputLayoutAnswers.setHint("Respuesta "+ (cont+1));
                         break;
                 }
             }
@@ -181,17 +183,20 @@ public class ConfigVotingActivity extends AppCompatActivity {
 
     //metodo para añadir una respuesta customizada al ArrayList de respuestas, al pulsar el boton de añadir
     public void addAnswer(View view) {
-        //añadimos una respuesta al contador de respuestas
-            if (cont <= 4 && !TextUtils.isEmpty(editOpenAnswer.getText().toString())) {
+        //añadimos una respuesta al contador de respuesta.
+            if (cont < 4 && !TextUtils.isEmpty(editOpenAnswer.getText().toString())) {
                 answersArray.add(editOpenAnswer.getText().toString());
                 editOpenAnswer.getText().clear();
                 Toast.makeText(this, "Respuesta añadida correctamente", Toast.LENGTH_SHORT).show();
                 //añadimos el string que sacamos del editText al array de respuestas.
                 cont++;
-                editOpenAnswer.setHint("Respuesta " + cont);
+                if(cont < 4) {
+                    editOpenAnswer.setHint("Respuesta " + (cont + 1));
+                    textInputLayoutAnswers.setHint("Respuesta " + (cont + 1));
+                }
             }else if (TextUtils.isEmpty(editOpenAnswer.getText().toString())){
                     Toast.makeText(this, "Añade primero una respuesta", Toast.LENGTH_SHORT).show();
-            } else if (cont > 4){
+            } else if (cont >= 4){
                 //si se añadido 4 respuestas, ya no se puede más.
                 Toast.makeText(this, "Número máximo de respuestas personalizables", Toast.LENGTH_SHORT).show();
             }

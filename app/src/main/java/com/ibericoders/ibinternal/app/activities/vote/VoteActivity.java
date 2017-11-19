@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -19,7 +20,7 @@ import butterknife.ButterKnife;
 public class VoteActivity extends AppCompatActivity {
 
     @BindView(R.id.textViewTopic) TextView textViewTopic;
-    @BindView(R.id.layout_VoteActivity) LinearLayout layout;
+    @BindView(R.id.linearLayoutAnswers) LinearLayout layout;
     //creamos variables numericas para contar cuántos votos tiene cada opcion
 
     private int totalParticipants, totalVotesInOptions, votesInA, votesInB, votesInC, votesInD;
@@ -50,9 +51,7 @@ public class VoteActivity extends AppCompatActivity {
 
         arrayVotes = new ArrayList<>(totalParticipants);
 
-        int BUTTON_WIDTH = 80;
-        int BUTTON_HEIGHT = 40;
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(BUTTON_WIDTH, BUTTON_HEIGHT);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
 
         for (int i=0; i<arrayAnswers.size(); i++){//para cada elemento de la lista de respuestas generamos un boton y le añadimos su texto.
