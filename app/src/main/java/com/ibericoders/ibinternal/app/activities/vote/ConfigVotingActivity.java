@@ -100,6 +100,7 @@ public class ConfigVotingActivity extends AppCompatActivity {
                         setVisibilityForAnswers(false);
                         break;
 
+
                     //en el caso de que el usuario elija "Respuestas personalizables", los botones para añadir dichas respuestas se hacen visibles
                     case "Respuestas personalizables":
                         setVisibilityForAnswers(true);
