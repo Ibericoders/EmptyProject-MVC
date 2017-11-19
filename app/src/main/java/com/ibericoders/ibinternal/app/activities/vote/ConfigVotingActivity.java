@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -82,7 +83,7 @@ public class ConfigVotingActivity extends AppCompatActivity {
             }
         });
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, new String[]{"Seleccione tipo", "Si / No", " A, B, C, D", "Respuestas personalizables"});
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, new String[]{"Seleccione tipo", "Si / No", "A, B, C, D", "Respuestas personalizables"});
         spinner.setAdapter(adapter);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -181,32 +182,27 @@ public class ConfigVotingActivity extends AppCompatActivity {
     //metodo para añadir una respuesta customizada al ArrayList de respuestas, al pulsar el boton de añadir
     public void addAnswer(View view) {
         //añadimos una respuesta al contador de respuestas
-        if (editOpenAnswer.getText().toString().equals("")) {
-            Toast.makeText(this, "Añade primero una respuesta", Toast.LENGTH_SHORT).show();
-        } else {
-            if (cont <= 4) {
-                if (editOpenAnswer.getText().toString().equals("")) {
+            if (cont <= 4 && !TextUtils.isEmpty(editOpenAnswer.getText().toString())) {
+                answersArray.add(editOpenAnswer.getText().toString());
+                editOpenAnswer.getText().clear();
+                Toast.makeText(this, "Respuesta añadida correctamente", Toast.LENGTH_SHORT).show();
+                //añadimos el string que sacamos del editText al array de respuestas.
+                cont++;
+                editOpenAnswer.setHint("Respuesta " + cont);
+            }else if (TextUtils.isEmpty(editOpenAnswer.getText().toString())){
                     Toast.makeText(this, "Añade primero una respuesta", Toast.LENGTH_SHORT).show();
-                } else {
-                    answersArray.add(editOpenAnswer.getText().toString());
-                    editOpenAnswer.getText().clear();
-                    Toast.makeText(this, "Respuesta añadida correctamente", Toast.LENGTH_SHORT).show();
-                    //añadimos el string que sacamos del editText al array de respuestas.
-                    cont++;
-                    editOpenAnswer.setHint("Respuesta " + (cont + 1));
-                }
-            } else {
+            } else if (cont > 4){
                 //si se añadido 4 respuestas, ya no se puede más.
                 Toast.makeText(this, "Número máximo de respuestas personalizables", Toast.LENGTH_SHORT).show();
             }
         }
-    }
 
     private void addYesNoToArray() {
         for (int i = 0; i < answersArray.size(); i++){
 
             answersArray.remove(i);
         }
+
         answersArray.add("Si");
         answersArray.add("No");
     }
@@ -223,7 +219,6 @@ public class ConfigVotingActivity extends AppCompatActivity {
         answersArray.add("Opción D");
     }
 
-
     private void setVisibilityForAnswers(boolean visible) {
         if (visible) {
             textInputLayoutAnswers.setVisibility(View.VISIBLE);
@@ -236,5 +231,3 @@ public class ConfigVotingActivity extends AppCompatActivity {
         }
     }
 }
-
-
