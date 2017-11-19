@@ -203,11 +203,20 @@ public class ConfigVotingActivity extends AppCompatActivity {
     }
 
     private void addYesNoToArray() {
+        for (int i = 0; i < answersArray.size(); i++){
+
+            answersArray.remove(i);
+        }
         answersArray.add("Si");
         answersArray.add("No");
     }
 
     private void addABCDToArray() {
+
+        for (int i = 0; i < answersArray.size(); i++){
+
+            answersArray.remove(i);
+        }
         answersArray.add("Opción A");
         answersArray.add("Opción B");
         answersArray.add("Opción C");
