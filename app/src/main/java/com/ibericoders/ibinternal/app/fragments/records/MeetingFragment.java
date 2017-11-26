@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import com.ibericoders.ibinternal.R;
+import com.ibericoders.ibinternal.app.activities.records.NewRecordActivity;
 import com.ibericoders.ibinternal.app.fragments.generics.InflatedFragment;
 import com.ibericoders.ibinternal.content.model.records.Attendee;
 import com.ibericoders.ibinternal.content.model.records.Record;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Desc:
@@ -25,7 +27,7 @@ import butterknife.BindView;
  * Version: 1.0
  */
 
-public class MeetingFragment extends InflatedFragment implements View.OnClickListener{
+public class MeetingFragment extends InflatedFragment {
 
 
     /*
@@ -44,16 +46,15 @@ public class MeetingFragment extends InflatedFragment implements View.OnClickLis
     /*
      * Atributos de negocio
      */
-    ArrayList<Attendee> atList;
-    Attendee att;
-    Record rec;
+    View mView;
+    Record mRecord;
 
-    public static MeetingFragment newInstance(Record rec, Attendee att, ArrayList<Attendee> atList){
+    public static MeetingFragment newInstance(Record rec){
+
+        Bundle args = new Bundle();
+        args.putParcelable("RECORD", rec);
         MeetingFragment fragment = new MeetingFragment();
-        fragment.att=att;
-        fragment.rec=rec;
-        fragment.atList=atList;
-
+        fragment.setArguments(args);
         return fragment;
     }
 
@@ -61,69 +62,68 @@ public class MeetingFragment extends InflatedFragment implements View.OnClickLis
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View v = inflater.inflate(R.layout.f_records_meeting, null);
+        mView = inflater.inflate(R.layout.f_records_meeting, null);
 
-        inflateView(v);
+        inflateView(mView);
         initAttrs();
-        fillView(v);
-        if (rec.getDate()!=null) {
-            dateSelector.setText(rec.getDate().toString());
-        }
-        if(rec.getTitle()!=null){
-            topicSelector.setText(rec.getTitle());
-        }
-        return v;
+        fillView(mView);
+
+        return mView;
     }
 
     @Override
     protected void initAttrs() {
 
-        dateSelector.setOnClickListener(this);
+        mRecord = getArguments().getParcelable("RECORD");
 
     }
 
     @Override
     protected void fillView(View view) {
 
-    }
-
-    @Override
-    public void onClick(View view) {
-
-        switch (view.getId()){
-
-            case R.id.recordsmeeting_date:
-
-                Calendar cal=Calendar.getInstance();
-                DatePickerDialog dgDate=new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        String fechaselec=view.getDayOfMonth()+"/"+(view.getMonth()+1)+"/"+view.getYear();
-                        dateSelector.setText(fechaselec);
-                    }
-                }, cal.get(Calendar.YEAR),cal.get(Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH));
-                rec.setDate(cal.getTimeInMillis());
-                dgDate.show();
-                break;
-
-            /*
-            case R.id.recordsmeeting_hour:
-
-                TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker timePicker, int hour, int minute) {
-                        hourSelector.setText(hour + ":" + minute);
-                    }
-                }, 20, 0, true);
-                break;
-            */
+        if (mRecord.getDate()!=null) {
+            dateSelector.setText(mRecord.getDate().toString());
+        }
+        if(mRecord.getTitle()!=null){
+            topicSelector.setText(mRecord.getTitle());
         }
     }
 
-    public Record DataSender(){
-            rec.setTitle(topicSelector.getText().toString());
-            rec.setAttendees(atList);
-        return rec;
+    @OnClick(R.id.recordsmeeting_date)
+    public void showDateSelector(){
+        Calendar cal=Calendar.getInstance();
+        DatePickerDialog dgDate=new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                String fechaselec=view.getDayOfMonth()+"/"+(view.getMonth()+1)+"/"+view.getYear();
+                dateSelector.setText(fechaselec);
+
+                Calendar mCal = Calendar.getInstance();
+                mCal.set(year, month, dayOfMonth);
+                mRecord.setDate(mCal.getTimeInMillis());
+            }
+        }, cal.get(Calendar.YEAR),cal.get(Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH));
+
+        dgDate.show();
+    }
+
+    public Record getData(){
+
+        //La fecha se guarda automáticamente
+        mRecord.setTitle(topicSelector.getText().toString());
+        //TODO Añadir los participantes.
+        return mRecord;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        mRecord = ((NewRecordActivity)getActivity()).mAdapter.getRecordData();
+
+        if (mView != null){
+            fillView(mView);
+        }
     }
 }
 

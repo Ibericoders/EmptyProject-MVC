@@ -18,7 +18,7 @@
         android:padding="@dimen/margin_padding_size_xxxsmall"
         android:scrollHorizontally="false"
         android:scrollbars="vertical"
-        android:text="resumen de la reunion..." />
+        android:hint="Resumen de la reunion..." />
 
     <LinearLayout
         android:id="@+id/fmeeting_firststeplayout"

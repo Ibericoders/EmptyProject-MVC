@@ -1,50 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        layout="@layout/g_toolbar"
-        android:id="@id/toolbar_tb"/>
-
-    <android.support.design.widget.TabLayout
-        android:id="@+id/newrecord_tablayout"
-        android:layout_width="match_parent"
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_save"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar_tb"
-        app:tabMode="fixed"
-        app:tabGravity="fill">
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        app:fabSize="normal"
+        app:elevation="6dp" />
 
-        <android.support.design.widget.TabItem
-            android:id="@+id/newrecord_meeting_ti"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/newrecord_tab_meeting" />
-
-        <android.support.design.widget.TabItem
-            android:id="@+id/newrecord_record_ti"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/newrecord_tab_record" />
-
-        <android.support.design.widget.TabItem
-            android:id="@+id/newrecord_attendees_ti"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/newrecord_tab_review" />
-
-
-    </android.support.design.widget.TabLayout>
-
-    <FrameLayout
-        android:id="@+id/newrecord_fragmentplaceholder"
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/newrecord_tablayout">
+        android:layout_height="match_parent">
 
-    </FrameLayout>
+        <include
+            layout="@layout/g_toolbar"
+            android:id="@id/toolbar_tb"/>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/newrecord_tablayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar_tb"
+            app:tabMode="fixed"
+            app:tabGravity="fill">
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/newrecord_meeting_ti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/newrecord_tab_meeting" />
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/newrecord_record_ti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/newrecord_tab_record" />
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/newrecord_attendees_ti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/newrecord_tab_review" />
 
 
-</RelativeLayout>
+        </android.support.design.widget.TabLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/newrecord_fragmentplaceholder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/newrecord_tablayout">
+
+        </android.support.v4.view.ViewPager>
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>
